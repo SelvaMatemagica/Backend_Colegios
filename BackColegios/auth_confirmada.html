@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cambiar contraseña</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #101933;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .card {
+      max-width: 600px;
+      padding: 40px 30px;
+      background-color: #172b4d;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .auth-button {
+      background-color: #4a6cf7;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .auth-button:hover {
+      background-color: #375bd2;
+    }
+
+    .error-message {
+      color: #ff6b6b;
+      margin-bottom: 20px;
+      font-size: 14px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Cambiar tu contraseña</h1>
+    <p>Introduce tu nueva contraseña dos veces para confirmar.</p>
+
+    <form id="passwordForm" onsubmit="return validatePasswords()">
+      <input type="password" id="password1" placeholder="Nueva contraseña" required />
+      <input type="password" id="password2" placeholder="Confirma la contraseña" required />
+      <div id="error" class="error-message">Las contraseñas no coinciden.</div>
+      <button type="submit" class="auth-button">Guardar</button>
+    </form>
+  </div>
+
+  <script>
+    function validatePasswords() {
+      const pass1 = document.getElementById('password1').value;
+      const pass2 = document.getElementById('password2').value;
+      const errorDiv = document.getElementById('error');
+
+      if (pass1 !== pass2) {
+        errorDiv.style.display = 'block';
+        return false;
+      } else {
+        errorDiv.style.display = 'none';
+        // Aquí podrías redirigir o hacer el submit como desees
+        alert('Contraseña actualizada correctamente.');
+        return true;
+      }
+    }
+  </script>
+</body>
+</html>
